@@ -1,0 +1,38 @@
+#main-navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    color: #0076fd;
+    font-weight: bold;
+    padding: 9px 18px;
+    margin-right: 0.7rem;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+button div {
+    display: flex;
+    align-items: center;
+}
+
+button:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: black;
+    color: white;
+}
+
+.login-btn {
+    text-decoration: none;
+    color: #0076fd;
+}
+
+.login-btn:hover {
+    color: white;
+}
