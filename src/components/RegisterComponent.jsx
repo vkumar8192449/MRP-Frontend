@@ -65,3 +65,4 @@ export const RegisterComponent = () => {
     </>
   );
 };
+export default RegisterComponent;

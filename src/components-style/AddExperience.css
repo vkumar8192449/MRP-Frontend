@@ -26,19 +26,19 @@ label {
     color: #555;
 }
 
-input[type="text"],
-input[type="password"],
-textarea,
-select {
-    width: 97%;
+.interview-form-container input[type="text"],
+.interview-form-container input[type="password"],
+.interview-form-container textarea,
+.interview-form-container select {
+    width: 100%;
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-button[type="submit"],
-button[type="button"] {
+.interview-form-container button[type="submit"],
+.interview-form-container button[type="button"] {
     display: block;
     width: 100%;
     padding: 10px;
@@ -51,7 +51,7 @@ button[type="button"] {
     margin-top: 10px;
 }
 
-button:hover {
+.interview-form-container button:hover {
     background-color: #0056b3;
 }
 
@@ -81,4 +81,32 @@ button:hover {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+}
+
+.buttons-container button {
+    margin: 0.5rem;
+}
+
+.spl-round-btn {
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.spl-round-btn:hover {
+    background-color: #f9f9f9 !important;
+    color: #007bff;
+    box-shadow: none;
+}
+
+.spl-question-btn {
+    background-color: #f9f9f9;
+    color: grey;
+    text-align: left;
+    width: 100%;
+}
+
+.spl-question-btn:hover {
+    background-color: #f9f9f9 !important;
+    color: #007bff;
+    box-shadow: none;
 }

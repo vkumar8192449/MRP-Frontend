@@ -3,9 +3,9 @@ import { MainBackWall } from './components/MainBackWall';
 import { LoginBackWall } from './components/LoginBackWall';
 import { MainNavbar } from './components/MainNavbar';
 import { HeroSection } from './components/HeroSection';
-import { LoginComponent } from './components/LoginComponent';
-import { AddExperience } from './components/AddExperience';
-import { RegisterComponent } from './components/RegisterComponent';
+import { AuthLoginComponent } from './Authenticator/AuthLoginComponent';
+import { AuthAddExperience } from './Authenticator/AuthAddExperience';
+import { AuthRegisterComponent } from './Authenticator/AuthRegisterComponent';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -50,7 +50,7 @@ function App() {
       element: <>
         <LoginBackWall />
         <MainNavbar islogin={islogin} />
-        <LoginComponent />
+        <AuthLoginComponent islogin={islogin} />
       </>
     },
     {
@@ -58,14 +58,14 @@ function App() {
       element: <>
         <LoginBackWall />
         <MainNavbar islogin={islogin} />
-        <RegisterComponent />
+        <AuthRegisterComponent islogin={islogin} />
       </>
     },
     {
       path: '/addexperience',
       element: <>
         <MainNavbar islogin={islogin} />
-        <AddExperience />
+        <AuthAddExperience islogin={islogin} />
       </>
     }
   ])
