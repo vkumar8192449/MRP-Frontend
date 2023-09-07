@@ -3,6 +3,7 @@ import "../components-style/MainNavbarRight.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
 
 export const MainNavbarRight = (props) => {
   return (
@@ -60,6 +61,20 @@ export const MainNavbarRight = (props) => {
                 &nbsp; Add Experience
               </div>
             </button>
+          </NavLink>
+        ) : (
+          ""
+        )}
+        {props.islogin === "true" ? (
+          <NavLink
+            to="/profile/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? `${props.setactivelink("profile/dashboard")} login-btn`
+                : "login-btn"
+            }
+          >
+            <Avatar src="/broken-image.jpg" />
           </NavLink>
         ) : (
           ""

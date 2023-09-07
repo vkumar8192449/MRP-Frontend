@@ -6,6 +6,7 @@ import { HeroSection } from './components/HeroSection';
 import { AuthLoginComponent } from './Authenticator/AuthLoginComponent';
 import { AuthAddExperience } from './Authenticator/AuthAddExperience';
 import { AuthRegisterComponent } from './Authenticator/AuthRegisterComponent';
+import { AuthProfile } from './Authenticator/AuthProfile';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -66,6 +67,13 @@ function App() {
       element: <>
         <MainNavbar islogin={islogin} />
         <AuthAddExperience islogin={islogin} />
+      </>
+    },
+    {
+      path: '/profile/dashboard',
+      element: <>
+        <MainNavbar islogin={islogin} />
+        <AuthProfile islogin={islogin} />
       </>
     }
   ])

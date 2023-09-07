@@ -1,0 +1,40 @@
+#profile-dashboard {
+    margin: 4rem 10rem;
+}
+
+table.interview-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 0.6em;
+    overflow: hidden;
+}
+
+th.interview-header {
+    background-color: #f2f2f2;
+    padding: 20px 10px;
+    text-align: left;
+    color: #484848;
+    font-weight: 500;
+}
+
+td.interview-data {
+    border-bottom: 1px solid #ddd;
+    padding: 16px 10px;
+    text-align: left;
+}
+
+.dash-btn {
+    margin: 0;
+    padding: 0;
+}
+
+.dash-btn:hover {
+    background-color: transparent;
+    box-shadow: none;
+    color: #484848;
+}
+
+.dash-col {
+    width: 180px;
+}
