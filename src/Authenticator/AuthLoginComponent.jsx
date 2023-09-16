@@ -2,11 +2,14 @@ import React from "react";
 import { LoginComponent } from "../components/LoginComponent";
 import { Navigate } from "react-router-dom";
 
-export const AuthLoginComponent = (prop) => {
+export const AuthLoginComponent = (props) => {
   return (
     <>
-      {prop.islogin === "false" ? (
-        <LoginComponent />
+      {props.islogin === "false" ? (
+        <LoginComponent
+          setislogin={props.setislogin}
+          setcurrentuser={props.setcurrentuser}
+        />
       ) : (
         <Navigate replace to="/home" />
       )}

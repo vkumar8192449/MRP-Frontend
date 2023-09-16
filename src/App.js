@@ -11,7 +11,10 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { useState } from 'react';
 
 function App() {
-  const [islogin, setislogin] = useState('true');
+  const [islogin, setislogin] = useState('false');
+  const [currentuser, setcurrentuser] = useState({
+    "user": {},
+  })
   const router = createBrowserRouter([
     {
       path: '/',
@@ -51,7 +54,7 @@ function App() {
       element: <>
         <LoginBackWall />
         <MainNavbar islogin={islogin} />
-        <AuthLoginComponent islogin={islogin} />
+        <AuthLoginComponent islogin={islogin} setislogin={setislogin} setcurrentuser={setcurrentuser} />
       </>
     },
     {
@@ -59,7 +62,7 @@ function App() {
       element: <>
         <LoginBackWall />
         <MainNavbar islogin={islogin} />
-        <AuthRegisterComponent islogin={islogin} />
+        <AuthRegisterComponent islogin={islogin} setislogin={setislogin} setcurrentuser={setcurrentuser} />
       </>
     },
     {

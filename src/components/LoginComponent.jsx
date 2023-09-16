@@ -9,8 +9,9 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
-export const LoginComponent = () => {
+export const LoginComponent = (props) => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [usernameerror, setusernameerror] = useState(false);
@@ -23,20 +24,58 @@ export const LoginComponent = () => {
     event.preventDefault();
   };
 
-  function tryLogin() {
+  const toastId = React.useRef(null);
+  const sendingnotify = (msg) => (toastId.current = toast.loading(msg));
+  const dismiss = () => toast.dismiss(toastId.current);
+  const errornotify = (msg) => toast.error(msg);
+  const successnotify = (msg) => toast.success(msg);
+
+  async function tryLogin() {
     if (!username.endsWith("@NITJSR.AC.IN")) {
+      errornotify("Invalid Email or Password");
       setusername("");
       setpassword("");
       setusernameerror(true);
       setuserpassworderror(true);
-    }
-    if (password.length === 0) {
-      setuserpassworderror(true);
+    } else {
+      if (password.length === 0) {
+        setuserpassworderror(true);
+        errornotify("Enter Password");
+      } else {
+        sendingnotify("Verifing...");
+        const response = await fetch(
+          "https://localhost:3000/api/v1/user/login",
+          {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: username,
+              password: password,
+            }),
+          }
+        );
+        const result = await response.json();
+        dismiss();
+        if (result.status === "success") {
+          successnotify("Logged in successfully");
+          setTimeout(() => {
+            props.setislogin("true");
+            props.setcurrentuser({ user: result.data.user });
+          }, 2000);
+        } else {
+          errornotify(result.message);
+        }
+      }
     }
   }
 
   return (
     <>
+      <Toaster position="bottom-left" reverseOrder={false} />
       <div id="login-component">
         <TextField
           sx={{
