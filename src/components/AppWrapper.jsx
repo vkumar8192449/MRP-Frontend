@@ -4,20 +4,21 @@ import { useEffect, useState } from "react";
 import { initLogin } from "../services/authServices";
 
 function AppWrapper() {
-  const { currentUser, updateCurrentUser } = useUserContext();
+  const { currentuser, setcurrentuser, setislogin } = useUserContext();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      if (!currentUser) {
+      if (!currentuser) {
         const { data } = await initLogin();
         if (data?.user) {
-          updateCurrentUser(data.user);
+          setcurrentuser({ user: data.user });
+          setislogin("true");
         }
       }
       setIsLoaded(true);
     })();
-  }, [currentUser, updateCurrentUser]);
+  }, [currentuser, setcurrentuser, setislogin]);
   return <>{isLoaded && <Outlet />}</>;
 }
 

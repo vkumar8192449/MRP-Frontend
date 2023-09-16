@@ -4,8 +4,10 @@ import "../components-style/MainNavbar.css";
 import { MainNavbarRight } from "./MainNavbarRight.jsx";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+import useUserContext from "../hooks/useUserContext";
 
 export const MainNavbar = (props) => {
+  const { islogin } = useUserContext();
   const [activelink, setactivelink] = useState("");
   return (
     <>
@@ -70,7 +72,7 @@ export const MainNavbar = (props) => {
           </div>
         </div>
         <MainNavbarRight
-          islogin={props.islogin}
+          islogin={islogin}
           activelink={activelink}
           setactivelink={setactivelink}
         />
