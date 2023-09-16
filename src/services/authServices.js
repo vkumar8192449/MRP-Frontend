@@ -1,4 +1,4 @@
-const initLogin = async (path) => {
+const initLogin = async () => {
   try {
     const response = await fetch(
       "https://localhost:3000/api/v1/user/loginStatus",
