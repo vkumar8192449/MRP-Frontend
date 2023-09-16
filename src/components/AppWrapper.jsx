@@ -1,12 +1,11 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import useUserContext from "../hooks/useUserContext";
 import { useEffect, useState } from "react";
+import { initLogin } from "../services/authServices";
 
 function AppWrapper() {
   const { currentUser, updateCurrentUser } = useUserContext();
   const [isLoaded, setIsLoaded] = useState(false);
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -18,7 +17,7 @@ function AppWrapper() {
       }
       setIsLoaded(true);
     })();
-  }, [currentUser, updateCurrentUser, pathname, navigate]);
+  }, [currentUser, updateCurrentUser]);
   return <>{isLoaded && <Outlet />}</>;
 }
 
