@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import "../components-style/AddExperience.css";
 
 export const AddExperience = () => {
@@ -6,8 +7,14 @@ export const AddExperience = () => {
   const [rounds, setRounds] = useState([]);
   const [phase, setphase] = useState(1);
 
+  // const toastId = React.useRef(null);
+  const errornotify = (msg) => toast.error(msg);
+  // const sendingnotify = (msg) => (toastId.current = toast.loading(msg));
+  // const dismiss = () => toast.dismiss(toastId.current);
+  const successnotify = (msg) => toast.success(msg);
+
   const handleAddRound = (e) => {
-    setRounds([...rounds, { questions: [] }]);
+    setRounds([...rounds, { questions: [], date: Date.now() }]);
   };
 
   const handleAddQuestion = (roundIndex) => {
@@ -60,8 +67,8 @@ export const AddExperience = () => {
     }
   }
   const [formData, setFormData] = useState({
-    status: "Placed",
-    offer: "FTE",
+    status: "placed",
+    offer: "fte",
     compensation: "",
   });
 
@@ -74,8 +81,35 @@ export const AddExperience = () => {
     event.preventDefault();
   };
 
+  async function finalsubmit() {
+    const obj = {
+      company: companyName,
+      rounds: rounds,
+      status: formData.status,
+      offer: formData.offer,
+      compensation: formData.compensation,
+      isSubmitted: true,
+    };
+    const response = await fetch("https://localhost:3000/api/v1/interview", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+    const result = await response.json();
+    if (result.status == "success") {
+      successnotify("Interview Added Successfully");
+    } else {
+      errornotify(result.message);
+    }
+  }
+
   return (
     <>
+      <Toaster position="bottom-left" reverseOrder={false} />
       <div className="interview-form-container">
         <p>Interview Form</p>
         {phase === 1 ? (
@@ -120,7 +154,7 @@ export const AddExperience = () => {
                       </label>
                       <input
                         type="text"
-                        name={`roundName${roundIndex}`}
+                        name="name"
                         value={roundIndex.name}
                         onChange={(e) => handleFormChange(e, roundIndex)}
                         required
@@ -132,15 +166,15 @@ export const AddExperience = () => {
                       </label>
                       <select
                         id={`roundType${roundIndex}`}
-                        name={`roundType${roundIndex}`}
+                        name="type"
                         value={roundIndex.type}
                         onChange={(e) => handleFormChange(e, roundIndex)}
                       >
-                        <option value="-">Choose</option>
-                        <option value="OA">OA</option>
-                        <option value="Technical">Technical</option>
-                        <option value="System Design">System Design</option>
-                        <option value="HR">HR</option>
+                        <option value="choose">Choose</option>
+                        <option value="oa">OA</option>
+                        <option value="technical">Technical</option>
+                        <option value="sys-design">System Design</option>
+                        <option value="hr">HR</option>
                       </select>
                     </div>
                     <div className="questions-container">
@@ -185,7 +219,7 @@ export const AddExperience = () => {
                               </label>
                               <input
                                 type="text"
-                                name={`questionTitle${roundIndex}${questionIndex}`}
+                                name="title"
                                 value={questionIndex.title}
                                 onChange={(e) =>
                                   handleFormChange(e, roundIndex, questionIndex)
@@ -201,7 +235,7 @@ export const AddExperience = () => {
                               </label>
                               <input
                                 type="text"
-                                name={`questionDescription${roundIndex}${questionIndex}`}
+                                name="description"
                                 value={questionIndex.description}
                                 onChange={(e) =>
                                   handleFormChange(e, roundIndex, questionIndex)
@@ -217,7 +251,7 @@ export const AddExperience = () => {
                               </label>
                               <input
                                 type="text"
-                                name={`questionLink${roundIndex}${questionIndex}`}
+                                name="link"
                                 value={questionIndex.link}
                                 onChange={(e) =>
                                   handleFormChange(e, roundIndex, questionIndex)
@@ -231,7 +265,7 @@ export const AddExperience = () => {
                     <div className="form-group">
                       <label htmlFor={`roundNotes${roundIndex}`}>Notes:</label>
                       <textarea
-                        name={`roundNotes${roundIndex}`}
+                        name="note"
                         value={roundIndex.notes}
                         onChange={(e) => handleFormChange(e, roundIndex)}
                       />
@@ -267,9 +301,9 @@ export const AddExperience = () => {
                     onChange={handleInputChange}
                     className="form-control"
                   >
-                    <option value="Placed">Placed</option>
-                    <option value="Ongoing">Ongoing</option>
-                    <option value="Not-Placed">Not Placed</option>
+                    <option value="placed">Placed</option>
+                    <option value="ongoing">Ongoing</option>
+                    <option value="not-placed">Not Placed</option>
                   </select>
                 </div>
                 <div className="form-group">
@@ -280,10 +314,10 @@ export const AddExperience = () => {
                     onChange={handleInputChange}
                     className="form-control"
                   >
-                    <option value="FTE">FTE</option>
-                    <option value="Internship">Internship</option>
-                    <option value="FTE+Internship">FTE + Internship</option>
-                    <option value="PPO">PPO</option>
+                    <option value="fte">FTE</option>
+                    <option value="internship">Internship</option>
+                    {/* <option value="FTE+Internship">FTE + Internship</option> */}
+                    {/* <option value="PPO">PPO</option> */}
                   </select>
                 </div>
                 <div className="form-group">
@@ -297,7 +331,11 @@ export const AddExperience = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <button type="submit" className="submit-button">
+                  <button
+                    type="submit"
+                    onClick={finalsubmit}
+                    className="submit-button"
+                  >
                     Final Submit
                   </button>
                 </div>

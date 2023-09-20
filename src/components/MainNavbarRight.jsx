@@ -1,4 +1,5 @@
 import React from "react";
+import useUserContext from "../hooks/useUserContext";
 import "../components-style/MainNavbarRight.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +7,12 @@ import { NavLink } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 
 export const MainNavbarRight = (props) => {
+  const { currentuser, setcurrentuser, setislogin } = useUserContext();
+  function stringAvatar(name) {
+    return {
+      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    };
+  }
   return (
     <>
       <div id="main-navbar-right">
@@ -74,7 +81,7 @@ export const MainNavbarRight = (props) => {
                 : "login-btn"
             }
           >
-            <Avatar src="/broken-image.jpg" />
+            <Avatar {...stringAvatar(currentuser.user.name)} />
           </NavLink>
         ) : (
           ""
