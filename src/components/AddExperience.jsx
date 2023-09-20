@@ -315,7 +315,7 @@ export const AddExperience = () => {
                     className="form-control"
                   >
                     <option value="fte">FTE</option>
-                    <option value="internship">Internship</option>
+                    <option value="intern">Internship</option>
                     {/* <option value="FTE+Internship">FTE + Internship</option> */}
                     {/* <option value="PPO">PPO</option> */}
                   </select>
