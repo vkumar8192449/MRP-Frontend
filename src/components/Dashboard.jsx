@@ -96,6 +96,11 @@ export const Dashboard = () => {
                               <HourglassTopIcon style={{ color: "#363f46" }} />{" "}
                               Pending
                             </>
+                          ) : value.verification.status === "not-verified" ? (
+                            <>
+                              <SaveAsIcon style={{ color: "#ffaf01" }} /> To be
+                              Submitted
+                            </>
                           ) : (
                             <>
                               <WorkspacePremiumIcon
@@ -111,6 +116,10 @@ export const Dashboard = () => {
                               <button className="dash-btn">
                                 Generate Poster
                               </button>
+                            </>
+                          ) : value.verification.status === "not-verified" ? (
+                            <>
+                              <button className="dash-btn">Submit Now</button>
                             </>
                           ) : (
                             <></>

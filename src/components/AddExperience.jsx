@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import "../components-style/AddExperience.css";
 
 export const AddExperience = () => {
+  const navigate = useNavigate();
   const [companyName, setCompanyName] = useState("");
   const [rounds, setRounds] = useState([]);
   const [phase, setphase] = useState(1);
@@ -102,6 +104,7 @@ export const AddExperience = () => {
     const result = await response.json();
     if (result.status == "success") {
       successnotify("Interview Added Successfully");
+      navigate("/profile/dashboard");
     } else {
       errornotify(result.message);
     }
