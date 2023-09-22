@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import "../components-style/AddExperience.css";
 
 export const AddExperience = () => {
@@ -104,7 +105,37 @@ export const AddExperience = () => {
     const result = await response.json();
     if (result.status == "success") {
       successnotify("Interview Added Successfully");
-      navigate("/profile/dashboard");
+      setTimeout(() => {
+        navigate("/profile/dashboard");
+      }, 2000);
+    } else {
+      errornotify(result.message);
+    }
+  }
+  async function savedraft() {
+    const obj = {
+      company: companyName,
+      rounds: rounds,
+      status: formData.status,
+      offer: formData.offer,
+      compensation: formData.compensation,
+      isSubmitted: false,
+    };
+    const response = await fetch("https://localhost:3000/api/v1/interview", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+    const result = await response.json();
+    if (result.status == "success") {
+      successnotify("Interview Saved Successfully");
+      setTimeout(() => {
+        navigate("/profile/dashboard");
+      }, 2000);
     } else {
       errornotify(result.message);
     }
@@ -114,9 +145,9 @@ export const AddExperience = () => {
     <>
       <Toaster position="bottom-left" reverseOrder={false} />
       <div className="interview-form-container">
-        <p>Interview Form</p>
         {phase === 1 ? (
           <>
+            <p>Interview Form</p>
             <div className="form-group">
               <label htmlFor="companyName">Company Name:</label>
               <input
@@ -293,6 +324,8 @@ export const AddExperience = () => {
           </>
         ) : (
           <>
+            <ArrowBackIosIcon onClick={settingphase} className="back-btn" />
+            <p>Interview Form</p>
             <div className="placement-form-container">
               {/* <h3 style={{ textAlign: "center" }}>Placement Details</h3> */}
               <form onSubmit={handleSubmit} className="placement-form">
@@ -336,6 +369,13 @@ export const AddExperience = () => {
                 <div className="form-group">
                   <button
                     type="submit"
+                    onClick={savedraft}
+                    className="submit-button"
+                  >
+                    Save Draft
+                  </button>
+                  <button
+                    type="submit"
                     onClick={finalsubmit}
                     className="submit-button"
                   >
@@ -346,7 +386,6 @@ export const AddExperience = () => {
             </div>
           </>
         )}
-        ;
       </div>
       <br />
       <br />

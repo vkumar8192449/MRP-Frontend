@@ -3,11 +3,14 @@ import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import moment from "moment";
 import SaveAsIcon from "@mui/icons-material/SaveAs";
+import DangerousIcon from "@mui/icons-material/Dangerous";
 import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 import "../components-style/Dashboard.css";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const [myinterviews, setmyinterviews] = useState([]);
   const [myinterviewsstatus, setmyinterviewsstatus] = useState(false);
   async function fetchingmyinterview() {
@@ -50,6 +53,9 @@ export const Dashboard = () => {
     if (result.status === "success") {
       window.location.reload();
     }
+  }
+  function submitnow() {
+    navigate("/addexperience");
   }
 
   return (
@@ -101,6 +107,11 @@ export const Dashboard = () => {
                               <SaveAsIcon style={{ color: "#ffaf01" }} /> To be
                               Submitted
                             </>
+                          ) : value.verification.status === "rejected" ? (
+                            <>
+                              <DangerousIcon style={{ color: "#ee3241" }} />{" "}
+                              Rejected
+                            </>
                           ) : (
                             <>
                               <WorkspacePremiumIcon
@@ -119,7 +130,9 @@ export const Dashboard = () => {
                             </>
                           ) : value.verification.status === "not-verified" ? (
                             <>
-                              <button className="dash-btn">Submit Now</button>
+                              <button className="dash-btn" onClick={submitnow}>
+                                Submit Now
+                              </button>
                             </>
                           ) : (
                             <></>
