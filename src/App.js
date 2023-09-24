@@ -14,8 +14,10 @@ import {
 } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext";
 import AppWrapper from "./components/AppWrapper";
+import { useState } from "react";
 
 function App() {
+  const [interviewid, setinterviewid] = useState("");
   const router = createBrowserRouter([
     {
       element: (
@@ -33,7 +35,7 @@ function App() {
           element: (
             <>
               <MainBackWall />
-              <MainNavbar />
+              <MainNavbar setinterviewid={setinterviewid} />
               <HeroSection />
             </>
           ),
@@ -43,7 +45,7 @@ function App() {
           element: (
             <>
               <MainBackWall />
-              <MainNavbar />
+              <MainNavbar setinterviewid={setinterviewid} />
             </>
           ),
         },
@@ -52,7 +54,7 @@ function App() {
           element: (
             <>
               <MainBackWall />
-              <MainNavbar />
+              <MainNavbar setinterviewid={setinterviewid} />
             </>
           ),
         },
@@ -61,7 +63,7 @@ function App() {
           element: (
             <>
               <MainBackWall />
-              <MainNavbar />
+              <MainNavbar setinterviewid={setinterviewid} />
             </>
           ),
         },
@@ -70,7 +72,7 @@ function App() {
           element: (
             <>
               <LoginBackWall />
-              <MainNavbar />
+              <MainNavbar setinterviewid={setinterviewid} />
               <AuthLoginComponent />
             </>
           ),
@@ -80,7 +82,7 @@ function App() {
           element: (
             <>
               <LoginBackWall />
-              <MainNavbar />
+              <MainNavbar setinterviewid={setinterviewid} />
               <AuthRegisterComponent />
             </>
           ),
@@ -89,8 +91,8 @@ function App() {
           path: "addexperience",
           element: (
             <>
-              <MainNavbar />
-              <AuthAddExperience />
+              <MainNavbar setinterviewid={setinterviewid} />
+              <AuthAddExperience interviewid={interviewid} />
             </>
           ),
         },
@@ -98,8 +100,8 @@ function App() {
           path: "profile/dashboard",
           element: (
             <>
-              <MainNavbar />
-              <AuthProfile />
+              <MainNavbar setinterviewid={setinterviewid} />
+              <AuthProfile setinterviewid={setinterviewid} />
             </>
           ),
         },

@@ -1,15 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import "../components-style/AddExperience.css";
 
-export const AddExperience = () => {
+export const AddExperience = (prop) => {
   const navigate = useNavigate();
   const [companyName, setCompanyName] = useState("");
   const [rounds, setRounds] = useState([]);
   const [phase, setphase] = useState(1);
+  const [formData, setFormData] = useState({
+    status: "placed",
+    offer: "fte",
+    compensation: "",
+  });
 
+  async function retrievedata() {
+    const response = await fetch(
+      `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
+      {
+        method: "GET",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    if (result.status === "success") {
+      successnotify("Data Retrieved Successfully");
+      setCompanyName(result.data.interview.company);
+      setRounds(result.data.interview.rounds);
+      setFormData({
+        status: result.data.interview.status,
+        offer: result.data.interview.offer,
+        compensation: result.data.interview.compensation,
+      });
+      console.log(result);
+    } else {
+      errornotify("Some Error Occured");
+    }
+  }
+
+  useEffect(() => {
+    if (prop.interviewid !== "") {
+      retrievedata();
+    }
+    // eslint-disable-next-line
+  }, []);
   // const toastId = React.useRef(null);
   const errornotify = (msg) => toast.error(msg);
   // const sendingnotify = (msg) => (toastId.current = toast.loading(msg));
@@ -69,11 +108,6 @@ export const AddExperience = () => {
       panel.style.display = "block";
     }
   }
-  const [formData, setFormData] = useState({
-    status: "placed",
-    offer: "fte",
-    compensation: "",
-  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -93,25 +127,51 @@ export const AddExperience = () => {
       compensation: formData.compensation,
       isSubmitted: true,
     };
-    const response = await fetch("https://localhost:3000/api/v1/interview", {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    });
-    const result = await response.json();
-    if (result.status == "success") {
-      successnotify("Interview Added Successfully");
-      setTimeout(() => {
-        navigate("/profile/dashboard");
-      }, 2000);
+
+    if (prop.interviewid === "") {
+      const response = await fetch("https://localhost:3000/api/v1/interview", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+      const result = await response.json();
+      if (result.status === "success") {
+        successnotify("Interview Added Successfully");
+        setTimeout(() => {
+          navigate("/profile/dashboard");
+        }, 2000);
+      } else {
+        errornotify(result.message);
+      }
     } else {
-      errornotify(result.message);
+      const response = await fetch(
+        `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
+        {
+          method: "PATCH",
+          mode: "cors",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        }
+      );
+      const result = await response.json();
+      if (result.status === "success") {
+        successnotify("Interview Added Successfully");
+        setTimeout(() => {
+          navigate("/profile/dashboard");
+        }, 2000);
+      } else {
+        errornotify(result.message);
+      }
     }
   }
+
   async function savedraft() {
     const obj = {
       company: companyName,
@@ -121,23 +181,48 @@ export const AddExperience = () => {
       compensation: formData.compensation,
       isSubmitted: false,
     };
-    const response = await fetch("https://localhost:3000/api/v1/interview", {
-      method: "POST",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    });
-    const result = await response.json();
-    if (result.status == "success") {
-      successnotify("Interview Saved Successfully");
-      setTimeout(() => {
-        navigate("/profile/dashboard");
-      }, 2000);
+
+    if (prop.interviewid === "") {
+      const response = await fetch("https://localhost:3000/api/v1/interview", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+      const result = await response.json();
+      if (result.status === "success") {
+        successnotify("Interview Saved Successfully");
+        setTimeout(() => {
+          navigate("/profile/dashboard");
+        }, 2000);
+      } else {
+        errornotify(result.message);
+      }
     } else {
-      errornotify(result.message);
+      const response = await fetch(
+        `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
+        {
+          method: "PATCH",
+          mode: "cors",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        }
+      );
+      const result = await response.json();
+      if (result.status === "success") {
+        successnotify("Interview Saved Successfully");
+        setTimeout(() => {
+          navigate("/profile/dashboard");
+        }, 2000);
+      } else {
+        errornotify(result.message);
+      }
     }
   }
 
@@ -189,7 +274,7 @@ export const AddExperience = () => {
                       <input
                         type="text"
                         name="name"
-                        value={roundIndex.name}
+                        value={rounds[roundIndex].name}
                         onChange={(e) => handleFormChange(e, roundIndex)}
                         required
                       />
@@ -201,7 +286,7 @@ export const AddExperience = () => {
                       <select
                         id={`roundType${roundIndex}`}
                         name="type"
-                        value={roundIndex.type}
+                        value={rounds[roundIndex].type}
                         onChange={(e) => handleFormChange(e, roundIndex)}
                       >
                         <option value="choose">Choose</option>
@@ -254,7 +339,10 @@ export const AddExperience = () => {
                               <input
                                 type="text"
                                 name="title"
-                                value={questionIndex.title}
+                                value={
+                                  rounds[roundIndex].questions[questionIndex]
+                                    .title
+                                }
                                 onChange={(e) =>
                                   handleFormChange(e, roundIndex, questionIndex)
                                 }
@@ -270,7 +358,10 @@ export const AddExperience = () => {
                               <input
                                 type="text"
                                 name="description"
-                                value={questionIndex.description}
+                                value={
+                                  rounds[roundIndex].questions[questionIndex]
+                                    .description
+                                }
                                 onChange={(e) =>
                                   handleFormChange(e, roundIndex, questionIndex)
                                 }
@@ -286,7 +377,10 @@ export const AddExperience = () => {
                               <input
                                 type="text"
                                 name="link"
-                                value={questionIndex.link}
+                                value={
+                                  rounds[roundIndex].questions[questionIndex]
+                                    .link
+                                }
                                 onChange={(e) =>
                                   handleFormChange(e, roundIndex, questionIndex)
                                 }
@@ -300,7 +394,7 @@ export const AddExperience = () => {
                       <label htmlFor={`roundNotes${roundIndex}`}>Notes:</label>
                       <textarea
                         name="note"
-                        value={roundIndex.notes}
+                        value={rounds[roundIndex].note}
                         onChange={(e) => handleFormChange(e, roundIndex)}
                       />
                     </div>

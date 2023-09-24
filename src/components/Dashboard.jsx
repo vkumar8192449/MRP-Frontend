@@ -9,7 +9,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import "../components-style/Dashboard.css";
 
-export const Dashboard = () => {
+export const Dashboard = (prop) => {
   const navigate = useNavigate();
   const [myinterviews, setmyinterviews] = useState([]);
   const [myinterviewsstatus, setmyinterviewsstatus] = useState(false);
@@ -26,7 +26,7 @@ export const Dashboard = () => {
       }
     );
     const result = await response.json();
-    if (result.status == "success") {
+    if (result.status === "success") {
       setmyinterviews(result.data.data);
       // console.log(result.data.data);
     }
@@ -54,8 +54,24 @@ export const Dashboard = () => {
       window.location.reload();
     }
   }
-  function submitnow() {
+  function submitnow(e) {
+    prop.setinterviewid(e);
     navigate("/addexperience");
+  }
+  async function generatePoster(_id) {
+    const response = await fetch(
+      `https://localhost:3000/api/v1/interview/${_id}/poster`,
+      {
+        method: "GET",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const result = await response.json();
+    console.log(result);
   }
 
   return (
@@ -124,13 +140,23 @@ export const Dashboard = () => {
                         <td className="interview-data">
                           {value.verification.status === "accepted" ? (
                             <>
-                              <button className="dash-btn">
+                              <button
+                                className="dash-btn"
+                                onClick={() => {
+                                  generatePoster(value._id);
+                                }}
+                              >
                                 Generate Poster
                               </button>
                             </>
                           ) : value.verification.status === "not-verified" ? (
                             <>
-                              <button className="dash-btn" onClick={submitnow}>
+                              <button
+                                className="dash-btn"
+                                onClick={() => {
+                                  submitnow(value._id);
+                                }}
+                              >
                                 Submit Now
                               </button>
                             </>

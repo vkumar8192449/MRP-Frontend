@@ -56,6 +56,9 @@ export const MainNavbarRight = (props) => {
         {props.islogin === "true" && props.activelink !== "addexperience" ? (
           <NavLink
             to="/addexperience"
+            onClick={() => {
+              props.setinterviewid("");
+            }}
             className={({ isActive }) =>
               isActive
                 ? `${props.setactivelink("addexperience")} login-btn`

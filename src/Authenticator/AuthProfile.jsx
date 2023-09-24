@@ -6,6 +6,12 @@ import useUserContext from "../hooks/useUserContext";
 export const AuthProfile = (prop) => {
   const { islogin } = useUserContext();
   return (
-    <>{islogin === "true" ? <Dashboard /> : <Navigate replace to="/home" />}</>
+    <>
+      {islogin === "true" ? (
+        <Dashboard setinterviewid={prop.setinterviewid} />
+      ) : (
+        <Navigate replace to="/home" />
+      )}
+    </>
   );
 };

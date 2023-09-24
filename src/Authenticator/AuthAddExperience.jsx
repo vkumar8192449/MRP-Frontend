@@ -7,7 +7,11 @@ export const AuthAddExperience = (prop) => {
   const { islogin } = useUserContext();
   return (
     <>
-      {islogin === "true" ? <AddExperience /> : <Navigate replace to="/home" />}
+      {islogin === "true" ? (
+        <AddExperience interviewid={prop.interviewid} />
+      ) : (
+        <Navigate replace to="/home" />
+      )}
     </>
   );
 };

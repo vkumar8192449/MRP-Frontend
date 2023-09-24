@@ -40,7 +40,7 @@ td.interview-data {
 }
 
 #logout-btn {
-    position: absolute;
+    position: fixed;
     bottom: 6%;
     right: 3%;
     border-radius: 6px;

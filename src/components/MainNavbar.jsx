@@ -72,6 +72,7 @@ export const MainNavbar = (props) => {
           </div>
         </div>
         <MainNavbarRight
+          setinterviewid={props.setinterviewid}
           islogin={islogin}
           activelink={activelink}
           setactivelink={setactivelink}
