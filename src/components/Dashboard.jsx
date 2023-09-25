@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import moment from "moment";
@@ -8,9 +9,13 @@ import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import "../components-style/Dashboard.css";
+import PosterPanel from "./PosterPanel";
 
 export const Dashboard = (prop) => {
   const navigate = useNavigate();
+  const errornotify = (msg) => toast.error(msg);
+  const successnotify = (msg) => toast.success(msg);
+
   const [myinterviews, setmyinterviews] = useState([]);
   const [myinterviewsstatus, setmyinterviewsstatus] = useState(false);
   async function fetchingmyinterview() {
@@ -58,24 +63,16 @@ export const Dashboard = (prop) => {
     prop.setinterviewid(e);
     navigate("/addexperience");
   }
-  async function generatePoster(_id) {
-    const response = await fetch(
-      `https://localhost:3000/api/v1/interview/${_id}/poster`,
-      {
-        method: "GET",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const result = await response.json();
-    console.log(result);
+  const [posterID, setposterID] = useState("");
+  const [posterpanel, setposterpanel] = useState(false);
+  function generatePoster(_id) {
+    setposterpanel(true);
+    setposterID(_id);
   }
 
   return (
     <>
+      <Toaster position="bottom-left" reverseOrder={false} />
       <div id="profile-dashboard">
         <div>
           <h2 style={{ textAlign: "center", fontStyle: "italic" }}>
@@ -195,6 +192,16 @@ export const Dashboard = (prop) => {
       >
         Logout
       </Button>
+      {posterpanel === true ? (
+        <PosterPanel
+          posterID={posterID}
+          setposterpanel={setposterpanel}
+          successnotify={successnotify}
+          errornotify={errornotify}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 };
