@@ -49,10 +49,7 @@ export const AddExperience = (prop) => {
     }
     // eslint-disable-next-line
   }, []);
-  // const toastId = React.useRef(null);
   const errornotify = (msg) => toast.error(msg);
-  // const sendingnotify = (msg) => (toastId.current = toast.loading(msg));
-  // const dismiss = () => toast.dismiss(toastId.current);
   const successnotify = (msg) => toast.success(msg);
 
   const handleAddRound = (e) => {
@@ -148,26 +145,42 @@ export const AddExperience = (prop) => {
         errornotify(result.message);
       }
     } else {
-      const response = await fetch(
+      let response = await fetch(
         `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
         {
-          method: "PATCH",
+          method: "DELETE",
           mode: "cors",
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(obj),
         }
       );
       const result = await response.json();
       if (result.status === "success") {
-        successnotify("Interview Added Successfully");
-        setTimeout(() => {
-          navigate("/profile/dashboard");
-        }, 2000);
+        const response = await fetch(
+          "https://localhost:3000/api/v1/interview",
+          {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(obj),
+          }
+        );
+        const result = await response.json();
+        if (result.status === "success") {
+          successnotify("Interview Added Successfully");
+          setTimeout(() => {
+            navigate("/profile/dashboard");
+          }, 2000);
+        } else {
+          errornotify(result.message);
+        }
       } else {
-        errornotify(result.message);
+        errornotify("Some Error Occured !!!");
       }
     }
   }
@@ -202,26 +215,42 @@ export const AddExperience = (prop) => {
         errornotify(result.message);
       }
     } else {
-      const response = await fetch(
+      let response = await fetch(
         `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
         {
-          method: "PATCH",
+          method: "DELETE",
           mode: "cors",
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(obj),
         }
       );
       const result = await response.json();
       if (result.status === "success") {
-        successnotify("Interview Saved Successfully");
-        setTimeout(() => {
-          navigate("/profile/dashboard");
-        }, 2000);
+        const response = await fetch(
+          "https://localhost:3000/api/v1/interview",
+          {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(obj),
+          }
+        );
+        const result = await response.json();
+        if (result.status === "success") {
+          successnotify("Interview Saved Successfully");
+          setTimeout(() => {
+            navigate("/profile/dashboard");
+          }, 2000);
+        } else {
+          errornotify(result.message);
+        }
       } else {
-        errornotify(result.message);
+        errornotify("Some Error Occured !!!");
       }
     }
   }
