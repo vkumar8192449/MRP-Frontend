@@ -1,7 +1,7 @@
 const initLogin = async () => {
   try {
     const response = await fetch(
-      "https://localhost:3000/api/v1/user/loginStatus",
+      `${process.env.REACT_APP_API_URL}/api/v1/user/loginStatus`,
       {
         method: "GET",
         mode: "cors",

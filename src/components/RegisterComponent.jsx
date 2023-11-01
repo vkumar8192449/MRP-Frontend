@@ -42,7 +42,7 @@ export const RegisterComponent = (props) => {
     } else if (registerbtntxt === "GET OTP") {
       sendingnotify("Sending OTP...");
       const response = await fetch(
-        "https://localhost:3000/api/v1/user/signup",
+        `${process.env.REACT_APP_API_URL}/api/v1/user/signup`,
         {
           method: "POST",
           mode: "cors",
@@ -75,7 +75,7 @@ export const RegisterComponent = (props) => {
       } else {
         sendingnotify("Registering User...");
         const response = await fetch(
-          "https://localhost:3000/api/v1/user/resetPassword",
+          `${process.env.REACT_APP_API_URL}/api/v1/user/resetPassword`,
           {
             method: "PATCH",
             mode: "cors",

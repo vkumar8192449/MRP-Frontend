@@ -17,7 +17,7 @@ export const AddExperience = (prop) => {
 
   async function retrievedata() {
     const response = await fetch(
-      `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
+      `${process.env.REACT_APP_API_URL}/api/v1/interview/${prop.interviewid}`,
       {
         method: "GET",
         mode: "cors",
@@ -126,15 +126,18 @@ export const AddExperience = (prop) => {
     };
 
     if (prop.interviewid === "") {
-      const response = await fetch("https://localhost:3000/api/v1/interview", {
-        method: "POST",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(obj),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/v1/interview`,
+        {
+          method: "POST",
+          mode: "cors",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        }
+      );
       const result = await response.json();
       if (result.status === "success") {
         successnotify("Interview Added Successfully");
@@ -146,7 +149,7 @@ export const AddExperience = (prop) => {
       }
     } else {
       let response = await fetch(
-        `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/interview/${prop.interviewid}`,
         {
           method: "DELETE",
           mode: "cors",
@@ -159,7 +162,7 @@ export const AddExperience = (prop) => {
       const result = await response.json();
       if (result.status === "success") {
         const response = await fetch(
-          "https://localhost:3000/api/v1/interview",
+          `${process.env.REACT_APP_API_URL}/api/v1/interview`,
           {
             method: "POST",
             mode: "cors",
@@ -196,15 +199,18 @@ export const AddExperience = (prop) => {
     };
 
     if (prop.interviewid === "") {
-      const response = await fetch("https://localhost:3000/api/v1/interview", {
-        method: "POST",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(obj),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/v1/interview`,
+        {
+          method: "POST",
+          mode: "cors",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        }
+      );
       const result = await response.json();
       if (result.status === "success") {
         successnotify("Interview Saved Successfully");
@@ -216,7 +222,7 @@ export const AddExperience = (prop) => {
       }
     } else {
       let response = await fetch(
-        `https://localhost:3000/api/v1/interview/${prop.interviewid}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/interview/${prop.interviewid}`,
         {
           method: "DELETE",
           mode: "cors",
@@ -229,7 +235,7 @@ export const AddExperience = (prop) => {
       const result = await response.json();
       if (result.status === "success") {
         const response = await fetch(
-          "https://localhost:3000/api/v1/interview",
+          `${process.env.REACT_APP_API_URL}/api/v1/interview`,
           {
             method: "POST",
             mode: "cors",

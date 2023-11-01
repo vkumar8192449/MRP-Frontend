@@ -21,7 +21,7 @@ export const PosterPanel = (prop) => {
     formData.append("photo", file, file.name);
     // console.log(file, formData.values());
     const response = await fetch(
-      `https://localhost:3000/api/v1/interview/${prop.posterID}/poster`,
+      `${process.env.REACT_APP_API_URL}/api/v1/interview/${prop.posterID}/poster`,
       {
         method: "POST",
         body: formData,

@@ -20,7 +20,7 @@ export const Dashboard = (prop) => {
   const [myinterviewsstatus, setmyinterviewsstatus] = useState(false);
   async function fetchingmyinterview() {
     const response = await fetch(
-      "https://localhost:3000/api/v1/user/myInterviews",
+      `${process.env.REACT_APP_API_URL}/api/v1/user/myInterviews`,
       {
         method: "GET",
         mode: "cors",
@@ -46,14 +46,17 @@ export const Dashboard = (prop) => {
   }, [myinterviews]);
 
   async function logoutuser() {
-    const response = await fetch("https://localhost:3000/api/v1/user/logout", {
-      method: "GET",
-      mode: "cors",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/v1/user/logout`,
+      {
+        method: "GET",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const result = await response.json();
     if (result.status === "success") {
       window.location.reload();

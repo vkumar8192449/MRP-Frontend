@@ -44,7 +44,7 @@ export const LoginComponent = (props) => {
       } else {
         sendingnotify("Verifing...");
         const response = await fetch(
-          "https://localhost:3000/api/v1/user/login",
+          `${process.env.REACT_APP_API_URL}/api/v1/user/login`,
           {
             method: "POST",
             mode: "cors",
