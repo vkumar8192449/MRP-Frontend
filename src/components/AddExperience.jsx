@@ -93,6 +93,20 @@ export const AddExperience = (prop) => {
       panel.style.display = "block";
     }
   }
+  const [, forceRender] = useState(undefined);
+  function deleteround(e) {
+    var temp = rounds;
+    temp.splice(e, 1);
+    setRounds(temp);
+    forceRender((prev) => !prev);
+  }
+  function deletequestion(roundIndex, questionIndex) {
+    var temp = rounds;
+    temp[roundIndex].questions.splice(questionIndex, 1);
+    setRounds(temp);
+    forceRender((prev) => !prev);
+  }
+
   function questionShrink(e) {
     var panel = e.target.nextElementSibling;
     if (panel.style.display === "block") {
@@ -288,6 +302,9 @@ export const AddExperience = (prop) => {
                       true ? `round-top-${roundIndex} spl-round-btn` : ""
                     }
                     onClick={roundShrink}
+                    onDoubleClick={() => {
+                      deleteround(roundIndex);
+                    }}
                   >
                     Round {roundIndex + 1}
                   </button>
@@ -341,7 +358,10 @@ export const AddExperience = (prop) => {
 
                       {/* Accorddation addign */}
                       {round.questions.map((index, questionIndex) => (
-                        <div key={`question-${roundIndex}-${questionIndex}`}>
+                        <div
+                          key={`question-${roundIndex}-${questionIndex}`}
+                          className="question-panel"
+                        >
                           <button
                             className={
                               true
@@ -349,6 +369,9 @@ export const AddExperience = (prop) => {
                                 : ""
                             }
                             onClick={questionShrink}
+                            onDoubleClick={() => {
+                              deletequestion(roundIndex, questionIndex);
+                            }}
                           >
                             Question No. {questionIndex + 1}
                           </button>
