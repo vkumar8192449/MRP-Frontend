@@ -32,6 +32,7 @@ export const PosterPanel = (prop) => {
     const result = await response.json();
     if (result.status === "success") {
       prop.successnotify(result.message);
+      window.open(process.env.REACT_APP_API_URL + result.download, "_blank");
     } else {
       prop.errornotify(result.message);
     }
