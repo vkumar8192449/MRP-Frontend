@@ -302,9 +302,6 @@ export const AddExperience = (prop) => {
                       true ? `round-top-${roundIndex} spl-round-btn` : ""
                     }
                     onClick={roundShrink}
-                    onDoubleClick={() => {
-                      deleteround(roundIndex);
-                    }}
                   >
                     Round {roundIndex + 1}
                   </button>
@@ -348,6 +345,7 @@ export const AddExperience = (prop) => {
                         <option value="hr">HR</option>
                       </select>
                     </div>
+
                     <div className="questions-container">
                       <button
                         type="button"
@@ -369,9 +367,6 @@ export const AddExperience = (prop) => {
                                 : ""
                             }
                             onClick={questionShrink}
-                            onDoubleClick={() => {
-                              deletequestion(roundIndex, questionIndex);
-                            }}
                           >
                             Question No. {questionIndex + 1}
                           </button>
@@ -444,6 +439,16 @@ export const AddExperience = (prop) => {
                                 }
                               />
                             </div>
+                            <div className="dltbtnq">
+                              <button
+                                className="deletequesbtn"
+                                onClick={() => {
+                                  deletequestion(roundIndex, questionIndex);
+                                }}
+                              >
+                                Delete Question
+                              </button>
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -455,6 +460,16 @@ export const AddExperience = (prop) => {
                         value={rounds[roundIndex].note}
                         onChange={(e) => handleFormChange(e, roundIndex)}
                       />
+                    </div>
+                    <div>
+                      <button
+                        className="div-deletebtn"
+                        onClick={() => {
+                          deleteround(roundIndex);
+                        }}
+                      >
+                        Delete Round
+                      </button>
                     </div>
                   </div>
                 </div>

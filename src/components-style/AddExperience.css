@@ -80,6 +80,10 @@ label {
     background-color: #fff;
     padding: 4px 15px;
     margin: 0px 7px;
+    border: 1px solid grey;
+    border-radius: 16px;
+    margin: .5rem 0;
+    font-size: 0.9rem;
 }
 
 .buttons-container {
@@ -104,18 +108,53 @@ label {
 }
 
 .spl-question-btn {
-    background-color: #f9f9f9;
     color: grey;
     text-align: center;
     width: 100%;
+    background-color: #fff;
+    font-size: .95rem;
+    padding: 6px;
 }
 
 .spl-question-btn:hover {
-    background-color: #f9f9f9 !important;
-    color: #007bff;
+    background-color: #fff !important;
+    color: #58a2f2;
     box-shadow: none;
 }
 
 .back-btn {
     cursor: pointer;
+}
+
+.div-deletebtn {
+    width: 100%;
+    color: tomato;
+    transform: none;
+    font-size: .95rem;
+    transition: all 100ms;
+}
+
+.div-deletebtn:hover {
+    color: tomato;
+    background-color: #fff !important;
+    border: 2px solid tomato;
+}
+
+.deletequesbtn {
+    color: tomato;
+    transform: none;
+    font-size: .95rem;
+    transition: all 100ms;
+    align-self: center;
+}
+
+.deletequesbtn:hover {
+    color: tomato;
+    background-color: #fff !important;
+    box-shadow: none;
+}
+
+.dltbtnq {
+    display: flex;
+    justify-content: center;
 }
