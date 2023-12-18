@@ -45,7 +45,7 @@ export const MainNavbarRight = (props) => {
           >
             <button>
               <div>
-                Join the Community &nbsp;
+                Sign Up  &nbsp;
                 <FontAwesomeIcon icon={faArrowRight} />
               </div>
             </button>

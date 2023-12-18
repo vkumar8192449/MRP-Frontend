@@ -1,5 +1,5 @@
 import React from "react";
-import mainlogo from "../main-logo.png";
+import mainlogo from "../mrp-logo.ico";
 import "../components-style/MainNavbar.css";
 import { MainNavbarRight } from "./MainNavbarRight.jsx";
 import { Link, NavLink } from "react-router-dom";
@@ -11,12 +11,12 @@ export const MainNavbar = (props) => {
   const [activelink, setactivelink] = useState("");
   return (
     <>
-      <div id="mainnavbar">
-        <div className="main-navbar-left">
+      <div id="mainnavbar" className="flex flex-wrap items-center justify-between p-4">
+        <div className="flex items-center">
           <Link to="/home">
-            <img src={mainlogo} className="main-nav-logo" alt="MRP-LOGO" />
+            <img src={mainlogo} className="main-nav-logo scale-75" alt="MRP-LOGO" />
           </Link>
-          <div className="navbar-links">
+          <div className="navbar-links ml-4">
             <div
               className={`${activelink === "home" ? "navbar-link-active" : ""}`}
             >
