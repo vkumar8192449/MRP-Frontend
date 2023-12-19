@@ -71,7 +71,7 @@ export const MainNavbar = (props) => {
             </div>
           </div>
         </div>
-        <MainNavbarRight
+        <MainNavbarRight className="flex"
           setinterviewid={props.setinterviewid}
           islogin={islogin}
           activelink={activelink}

@@ -2,6 +2,10 @@ import "./App.css";
 import { MainBackWall } from "./components/MainBackWall";
 import { LoginBackWall } from "./components/LoginBackWall";
 import { MainNavbar } from "./components/MainNavbar";
+import { Team } from "./components/Team";
+import { About } from "./components/About";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
 import { HeroSection } from "./components/HeroSection";
 import { AuthLoginComponent } from "./Authenticator/AuthLoginComponent";
 import { AuthAddExperience } from "./Authenticator/AuthAddExperience";
@@ -37,6 +41,10 @@ function App() {
               <MainBackWall />
               <MainNavbar setinterviewid={setinterviewid} />
               <HeroSection />
+              <About/>
+              <Team/>
+              <Contact/>
+              <Footer/>
             </>
           ),
         },
