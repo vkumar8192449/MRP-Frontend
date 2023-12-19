@@ -2,6 +2,7 @@ import "./App.css";
 import { MainBackWall } from "./components/MainBackWall";
 import { LoginBackWall } from "./components/LoginBackWall";
 import { MainNavbar } from "./components/MainNavbar";
+import { Element } from "react-scroll";
 import { Team } from "./components/Team";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
@@ -40,11 +41,19 @@ function App() {
             <>
               <MainBackWall />
               <MainNavbar setinterviewid={setinterviewid} />
-              <HeroSection />
-              <About/>
-              <Team/>
-              <Contact/>
-              <Footer/>
+              <Element name="home">
+                <HeroSection />
+              </Element>
+              <Element name="about">
+                <About />
+              </Element>
+              <Element name="team">
+                <Team />
+              </Element>
+              <Element name="contact">
+                <Contact />
+              </Element>
+              <Footer />
             </>
           ),
         },
