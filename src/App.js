@@ -58,7 +58,7 @@ function App() {
           ),
         },
         {
-          path: "blog",
+          path: "team",
           element: (
             <>
               <MainBackWall />

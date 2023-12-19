@@ -1,6 +1,5 @@
-import React from "react";
-import mainlogo from "../mrp-logo.ico";
-// import "../components-style/MainNavbar.css";
+import React from "react"; import mainlogo from "../mrp-logo.ico";
+// import "../components-style/MainNavbar.css"; 
 import { MainNavbarRight } from "./MainNavbarRight.jsx";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -11,72 +10,29 @@ export const MainNavbar = (props) => {
   const [activelink, setactivelink] = useState("");
   return (
     <>
-      <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200 backdrop-filter backdrop-blur-lg bg-opacity-10">
-        <div id="mainnavbar" className="flex flex-wrap justify-around items-center">
-          <div className="flex items-center">
-            <Link to="/home">
-              <img src={mainlogo} className="main-nav-logo scale-50" alt="MRP-LOGO" />
-            </Link>
-            <div className="navbar-links flex flex-row">
-              <div
-                className={`${activelink === "home" ? "navbar-link-active" : ""}`}
-              >
-                <NavLink
-                  to="/home"
-                  className={({ isActive }) =>
-                    isActive ? `${setactivelink("home")} navbar-L` : "navbar-L"
-                  }
-                >
-                  Home
-                </NavLink>
-              </div>
-              <div
-                className={`${activelink === "about" ? "navbar-link-active" : ""
-                  }`}
-              >
-                <NavLink
-                  to="/about"
-                  className={({ isActive }) =>
-                    isActive ? `${setactivelink("about")} navbar-L` : "navbar-L"
-                  }
-                >
-                  About
-                </NavLink>
-              </div>
-              <div
-                className={`${activelink === "blog" ? "navbar-link-active" : ""}`}
-              >
-                <NavLink
-                  to="/blog"
-                  className={({ isActive }) =>
-                    isActive ? `${setactivelink("blog")} navbar-L` : "navbar-L"
-                  }
-                >
-                  Blog
-                </NavLink>
-              </div>
-              <div
-                className={`${activelink === "contact" ? "navbar-link-active" : ""
-                  }`}
-              >
-                <NavLink
-                  to="/contact"
-                  className={({ isActive }) =>
-                    isActive ? `${setactivelink("contact")} navbar-L` : "navbar-L"
-                  }
-                >
-                  Contact
-                </NavLink>
-              </div>
-            </div>
-          </div>
-          <MainNavbarRight className="flex"
-            setinterviewid={props.setinterviewid}
-            islogin={islogin}
-            activelink={activelink}
-            setactivelink={setactivelink}
-          />
+    <nav className="py-4">
+      <div className="flex flex-row justify-around items-center flex-wrap">
+        <div>
+          <Link to="/home">
+            <img src={mainlogo} className="main-nav-logo h-16 w-16 items-center" alt="MRP-LOGO" />
+          </Link>
         </div>
+        <div className="flex flex-row items-center ">
+          <NavLink to="/home" className="font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"> Home </NavLink>
+          <NavLink to="/about" className="font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"> About </NavLink>
+          <NavLink to="/team" className="font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"> Team </NavLink>
+          <NavLink to="/contact" className="font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0"> Contact </NavLink>
+        </div>
+        <div className="-mr-36 ">
+          <MainNavbarRight className="" setinterviewid={props.setinterviewid} islogin={islogin} activelink={activelink} setactivelink={setactivelink} />
+          {/* <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+          </button> */}
+        </div>
+      </div>
       </nav>
     </>
   );

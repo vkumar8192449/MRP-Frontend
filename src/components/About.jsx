@@ -2,7 +2,7 @@ import React from "react";
 
 export const About = () => {
     return (
-        <section class="bg-white -mt-12 mb-16">
+        <section class="bg-white -mt-12 pt-28 mb-16">
             <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
                 <img class="w-full " src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image" />
                 <div class="mt-4 md:mt-0">
