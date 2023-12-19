@@ -5,13 +5,14 @@ import FrontModel from "../front-model.png";
 export const MainBackWall = () => {
   return (
     <>
-      <div id="mainbackwall">
-        <div className="mainbackwall-left"></div>
-        <div className="mainbackwall-right"></div>
-        <div className="hero-section-image">
+      <div id="mainbackwall" className="bg-gradient-to-r from-violet-200 to-pink-200">
+        {/* <div className="mainbackwall-left"></div>
+        <div className="mainbackwall-right"></div> */}
+        {/* <div className="hero-section-image">
           <img src={FrontModel} alt="" />
-        </div>
+        </div> */}
       </div>
     </>
   );
 };
+

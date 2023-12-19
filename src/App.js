@@ -2,6 +2,11 @@ import "./App.css";
 import { MainBackWall } from "./components/MainBackWall";
 import { LoginBackWall } from "./components/LoginBackWall";
 import { MainNavbar } from "./components/MainNavbar";
+import { Element } from "react-scroll";
+import { Team } from "./components/Team";
+import { About } from "./components/About";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
 import { HeroSection } from "./components/HeroSection";
 import { AuthLoginComponent } from "./Authenticator/AuthLoginComponent";
 import { AuthAddExperience } from "./Authenticator/AuthAddExperience";
@@ -36,7 +41,19 @@ function App() {
             <>
               <MainBackWall />
               <MainNavbar setinterviewid={setinterviewid} />
-              <HeroSection />
+              <Element name="home">
+                <HeroSection />
+              </Element>
+              <Element name="about">
+                <About />
+              </Element>
+              <Element name="team">
+                <Team />
+              </Element>
+              <Element name="contact">
+                <Contact />
+              </Element>
+              <Footer />
             </>
           ),
         },
@@ -50,7 +67,7 @@ function App() {
           ),
         },
         {
-          path: "blog",
+          path: "team",
           element: (
             <>
               <MainBackWall />

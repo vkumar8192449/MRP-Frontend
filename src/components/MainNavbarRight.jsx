@@ -1,6 +1,6 @@
 import React from "react";
 import useUserContext from "../hooks/useUserContext";
-import "../components-style/MainNavbarRight.css";
+// import "../components-style/MainNavbarRight.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
@@ -27,7 +27,7 @@ export const MainNavbarRight = (props) => {
                 : "login-btn"
             }
           >
-            <button>Log In</button>
+            <button className="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2">Log In</button>
           </NavLink>
         ) : (
           ""
@@ -43,9 +43,9 @@ export const MainNavbarRight = (props) => {
                 : "login-btn"
             }
           >
-            <button>
+            <button className="inline-flex ml-6 items-center text-blue-700 bg-white hover:bg-blue-800 hover:text-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-3 py-2">
               <div>
-                Join the Community &nbsp;
+                Sign Up  &nbsp;
                 <FontAwesomeIcon icon={faArrowRight} />
               </div>
             </button>
