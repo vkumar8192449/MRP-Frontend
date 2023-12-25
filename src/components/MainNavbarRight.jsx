@@ -15,7 +15,7 @@ export const MainNavbarRight = (props) => {
   }
   return (
     <>
-      <div id="main-navbar-right">
+      <div id="main-navbar-right" className="flex flex-col justify-center items-center lg:flex-row text-lg lg:text-base lg:space-x-8">
         {props.islogin === "false" &&
         props.activelink !== "login" &&
         props.activelink !== "register" ? (
@@ -27,7 +27,7 @@ export const MainNavbarRight = (props) => {
                 : "login-btn"
             }
           >
-            <button className="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2">Log In</button>
+            <button className="flex justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2">Log In</button>
           </NavLink>
         ) : (
           ""
@@ -43,7 +43,7 @@ export const MainNavbarRight = (props) => {
                 : "login-btn"
             }
           >
-            <button className="inline-flex ml-6 items-center text-blue-700 bg-white hover:bg-blue-800 hover:text-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-3 py-2">
+            <button className="flex justify-center mt-8 lg:mt-0 text-blue-700 bg-white hover:bg-blue-800 hover:text-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-3 py-2 lg:border-0 border-[0.5px] border-gray-400">
               <div>
                 Sign Up  &nbsp;
                 <FontAwesomeIcon icon={faArrowRight} />
