@@ -88,9 +88,11 @@ function App() {
           path: "login",
           element: (
             <>
-              <LoginBackWall />
-              <MainNavbar setinterviewid={setinterviewid} />
-              <AuthLoginComponent />
+              {/* <MainNavbar setinterviewid={setinterviewid} /> */}
+              <div className="flex sm:p-24 px-8 pt-16 gap-12 sm:gap-52 md:flex-row flex-col-reverse items-center justify-center">
+                <LoginBackWall />
+                <AuthLoginComponent />
+              </div>
             </>
           ),
         },
