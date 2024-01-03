@@ -28,7 +28,7 @@
     margin-top: 8%;
 } */
 
-.main-container {
+/* .main-container {
     transform: scale(0.8);
     display: flex;
     display: -webkit-flex;
@@ -37,7 +37,7 @@
     height: 560px;
     overflow: hidden;
     width: 600px;
-}
+} */
 
 @media screen and (max-width: 768px) {
     .main-container {

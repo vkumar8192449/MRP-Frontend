@@ -20,7 +20,8 @@ import {
 import { UserProvider } from "./contexts/UserContext";
 import AppWrapper from "./components/AppWrapper";
 import { useState } from "react";
-
+import mainlogo from "./mrp-logo.ico";
+import { Link } from "react-scroll";
 function App() {
   const [interviewid, setinterviewid] = useState("");
   const router = createBrowserRouter([
@@ -89,8 +90,19 @@ function App() {
           element: (
             <>
               {/* <MainNavbar setinterviewid={setinterviewid} /> */}
-              <div className="flex sm:p-24 px-8 pt-16 gap-12 sm:gap-52 md:flex-row flex-col-reverse items-center justify-center">
-                <LoginBackWall />
+              <div className="md:px-24 py-8 px-8">
+                <a href='/home'>
+                  <img
+                        src={mainlogo}
+                        className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
+                        alt="MRP-LOGO"
+                      />
+                </a>
+              </div>
+              <div className="flex sm:p-24 px-6 pt-16 gap-12 sm:gap-52 md:flex-row flex-col-reverse items-center justify-center">
+                <div className="">
+                  <LoginBackWall />
+                </div>
                 <AuthLoginComponent />
               </div>
             </>
