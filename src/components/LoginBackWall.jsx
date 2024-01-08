@@ -5,10 +5,10 @@ export const LoginBackWall = () => {
   return (
     <>
       <div id="loginbackwall">
-        <div className="loginbackwall-left"></div>
-        <div className="loginbackwall-right"></div>
+        {/* <div className="loginbackwall-left"></div> */}
+        {/* <div className="loginbackwall-right"></div> */}
         <div className="login-section-image">
-          <section className="main-container">
+          <section className="main-container flex items-center justify-center scale-50 -mr-10 lg:-mr-48 -ml-10 lg:-ml-20 xl:-mr-0 md:scale-75">
             <div className="main">
               <div className="big-circle">
                 <div className="icon-block">
