@@ -99,28 +99,28 @@
 .icon-block:first-child {
     top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(2) !important;
     -webkit-transform: translate(-50%, -50%);
 }
 
 .icon-block:nth-child(2) {
     top: 50%;
     right: 0;
-    transform: translate(50%, -50%);
+    transform: translate(50%, -50%) scale(2) !important;
     -webkit-transform: translate(50%, -50%);
 }
 
 .icon-block:nth-child(3) {
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%) scale(2) !important;
     -webkit-transform: translate(-50%, 50%);
 }
 
 .icon-block:nth-child(4) {
     top: 50%;
     left: 0;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(2) !important;
     -webkit-transform: translate(-50%, -50%);
 }
 
