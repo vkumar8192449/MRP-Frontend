@@ -91,7 +91,8 @@ function App() {
             <>
               {/* <MainNavbar setinterviewid={setinterviewid} /> */}
               <div className="md:px-24 py-8 px-8">
-                <a href='/home'>
+                <a href='/home' style={{ display: "inline-block" }
+                }>
                   <img
                     src={mainlogo}
                     className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
@@ -114,7 +115,8 @@ function App() {
             <>
               {/* <MainNavbar setinterviewid={setinterviewid} /> */}
               <div className="md:px-24 py-8 px-8">
-                <a href='/home'>
+                <a href='/home' style={{ display: "inline-block" }
+                }>
                   <img
                     src={mainlogo}
                     className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
@@ -167,7 +169,7 @@ function App() {
           path: "profile/dashboard",
           element: (
             <>
-              <MainNavbar setinterviewid={setinterviewid} />
+              <MainNavbar setinterviewid={setinterviewid} route="true" />
               <AuthProfile setinterviewid={setinterviewid} />
             </>
           ),

@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import "../components-style/AddExperience.css";
+import "../index.css";
 
 export const AddExperience = (prop) => {
   const navigate = useNavigate();
@@ -278,10 +279,10 @@ export const AddExperience = (prop) => {
   return (
     <>
       <Toaster position="bottom-left" reverseOrder={false} />
-      <div className="interview-form-container">
+      <div className="interview-form-container mx-[5rem] md:mx-[10rem]">
         {phase === 1 ? (
           <>
-            <p>Interview Form</p>
+            <p className="">Interview Form</p>
             <div className="form-group">
               <label htmlFor="companyName">Company Name:</label>
               <input

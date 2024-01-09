@@ -77,7 +77,7 @@ export const Dashboard = (prop) => {
     <>
       <Toaster position="bottom-left" reverseOrder={false} />
       <div id="profile-dashboard">
-        <div>
+        <div className="overflow-x-scroll">
           <h2 style={{ textAlign: "center", fontStyle: "italic" }}>
             Interview Records
           </h2>
