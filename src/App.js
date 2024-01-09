@@ -137,7 +137,6 @@ function App() {
           path: "resetpassword",
           element: (
             <>
-              {/* <MainNavbar setinterviewid={setinterviewid} /> */}
               <div className="md:px-24 py-8 px-8">
                 <a href='/home'>
                   <img
@@ -160,7 +159,7 @@ function App() {
           path: "addexperience",
           element: (
             <>
-              <MainNavbar setinterviewid={setinterviewid} route="true"  />
+              <MainNavbar setinterviewid={setinterviewid} route="true" />
               <AuthAddExperience interviewid={interviewid} />
             </>
           ),
