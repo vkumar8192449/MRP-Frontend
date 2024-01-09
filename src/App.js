@@ -11,6 +11,7 @@ import { HeroSection } from "./components/HeroSection";
 import { AuthLoginComponent } from "./Authenticator/AuthLoginComponent";
 import { AuthAddExperience } from "./Authenticator/AuthAddExperience";
 import { AuthRegisterComponent } from "./Authenticator/AuthRegisterComponent";
+import { AuthResetPassword } from "./Authenticator/AuthResetPassword";
 import { AuthProfile } from "./Authenticator/AuthProfile";
 import {
   createBrowserRouter,
@@ -21,7 +22,6 @@ import { UserProvider } from "./contexts/UserContext";
 import AppWrapper from "./components/AppWrapper";
 import { useState } from "react";
 import mainlogo from "./mrp-logo.ico";
-import { Link } from "react-scroll";
 function App() {
   const [interviewid, setinterviewid] = useState("");
   const router = createBrowserRouter([
@@ -127,6 +127,29 @@ function App() {
                   <LoginBackWall />
                 </div>
                 <AuthRegisterComponent />
+              </div>
+            </>
+          ),
+        },
+        {
+          path: "resetpassword",
+          element: (
+            <>
+              {/* <MainNavbar setinterviewid={setinterviewid} /> */}
+              <div className="md:px-24 py-8 px-8">
+                <a href='/home'>
+                  <img
+                    src={mainlogo}
+                    className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
+                    alt="MRP-LOGO"
+                  />
+                </a>
+              </div>
+              <div className="flex sm:p-24 px-6 pt-16 gap-12 sm:gap-52 md:flex-row flex-col-reverse items-center justify-center">
+                <div className="hidden md:block">
+                  <LoginBackWall />
+                </div>
+                <AuthResetPassword />
               </div>
             </>
           ),

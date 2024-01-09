@@ -1,28 +1,14 @@
 import React, { useState } from "react";
 import "../components-style/LoginComponent.css";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import FilledInput from "@mui/material/FilledInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 export const LoginComponent = (props) => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
+  // eslint-disable-next-line
   const [usernameerror, setusernameerror] = useState(false);
+  // eslint-disable-next-line
   const [userpassworderror, setuserpassworderror] = useState(false);
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
 
   const toastId = React.useRef(null);
   const sendingnotify = (msg) => (toastId.current = toast.loading(msg));
@@ -202,7 +188,8 @@ export const LoginComponent = (props) => {
                 </div>
               </div>
               <a
-                href="#"
+                style={{ cursor: "pointer" }}
+                href="/resetpassword"
                 class="text-sm font-medium text-primary-600 hover:underline "
               >
                 Forgot password?
