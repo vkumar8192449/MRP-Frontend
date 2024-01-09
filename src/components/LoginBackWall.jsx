@@ -1,5 +1,6 @@
 import React from "react";
 import "../components-style/LoginBackWall.css";
+import { Scale } from "@mui/icons-material";
 
 export const LoginBackWall = () => {
   return (

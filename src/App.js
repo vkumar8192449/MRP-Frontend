@@ -93,10 +93,10 @@ function App() {
               <div className="md:px-24 py-8 px-8">
                 <a href='/home'>
                   <img
-                        src={mainlogo}
-                        className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
-                        alt="MRP-LOGO"
-                      />
+                    src={mainlogo}
+                    className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
+                    alt="MRP-LOGO"
+                  />
                 </a>
               </div>
               <div className="flex sm:p-24 px-6 pt-16 gap-12 sm:gap-52 md:flex-row flex-col-reverse items-center justify-center">
@@ -116,10 +116,10 @@ function App() {
               <div className="md:px-24 py-8 px-8">
                 <a href='/home'>
                   <img
-                        src={mainlogo}
-                        className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
-                        alt="MRP-LOGO"
-                      />
+                    src={mainlogo}
+                    className="hover:cursor-pointer main-nav-logo z-40 h-16 w-16 items-center"
+                    alt="MRP-LOGO"
+                  />
                 </a>
               </div>
               <div className="flex sm:p-24 px-6 pt-16 gap-12 sm:gap-52 md:flex-row flex-col-reverse items-center justify-center">
