@@ -8,7 +8,9 @@ import useUserContext from "../hooks/useUserContext";
 export const MainNavbar = (props) => {
   const { islogin } = useUserContext();
   const [activelink, setactivelink] = useState("");
-
+  const closeNavbar = () => {
+    document.getElementById("hamburger").checked = false;
+  };
   return (
     <nav className="relative z-20 py-4">
       <div className="flex flex-row justify-around items-center flex-wrap">
@@ -55,24 +57,28 @@ export const MainNavbar = (props) => {
                 <Link
                   to="home"
                   className="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 hover:cursor-pointer font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent smooth: 'easeInOutQuint'  duration={500} md:hover:text-blue-700 md:p-0"
+                  onClick={closeNavbar}
                 >
                   Home
                 </Link>
                 <Link
                   to="about"
                   className="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 hover:cursor-pointer font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent smooth: 'easeInOutQuint' duration={500} md:hover:text-blue-700 md:p-0"
+                  onClick={closeNavbar}
                 >
                   About
                 </Link>
                 <Link
                   to="team"
                   className="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 hover:cursor-pointer font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent smooth: 'easeInOutQuint'  duration={500} md:hover:text-blue-700 md:p-0"
+                  onClick={closeNavbar}
                 >
                   Team
                 </Link>
                 <Link
                   to="contact"
                   className="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 hover:cursor-pointer font-semibold text-lg block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent smooth: 'easeInOutQuint'  duration={500} md:hover:text-blue-700 md:p-0"
+                  onClick={closeNavbar}
                 >
                   Contact
                 </Link>
