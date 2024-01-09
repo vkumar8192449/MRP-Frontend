@@ -89,7 +89,6 @@ function App() {
           path: "login",
           element: (
             <>
-              {/* <MainNavbar setinterviewid={setinterviewid} /> */}
               <div className="md:px-24 py-8 px-8">
                 <a href='/home' style={{ display: "inline-block" }
                 }>
@@ -113,7 +112,6 @@ function App() {
           path: "register",
           element: (
             <>
-              {/* <MainNavbar setinterviewid={setinterviewid} /> */}
               <div className="md:px-24 py-8 px-8">
                 <a href='/home' style={{ display: "inline-block" }
                 }>
