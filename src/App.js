@@ -160,7 +160,7 @@ function App() {
           path: "addexperience",
           element: (
             <>
-              <MainNavbar setinterviewid={setinterviewid} />
+              <MainNavbar setinterviewid={setinterviewid} route="true"  />
               <AuthAddExperience interviewid={interviewid} />
             </>
           ),
