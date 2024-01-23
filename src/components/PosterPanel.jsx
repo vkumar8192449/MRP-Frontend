@@ -48,7 +48,19 @@ export const PosterPanel = (prop) => {
       <div id="posterpanel" onClick={cloaseposterpanel}></div>
       <div id="poster-main">
         <input type="file" name="photo" id="photo" onChange={onFileChange} />
-        <button onClick={onFileUpload}>Upload</button>
+        <button
+          onClick={onFileUpload}
+          class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
+        >
+          <svg
+            class="fill-current w-4 h-4 mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M7 12V18H13V12H18l-8-8-8 8h5z" />
+          </svg>
+          <span>Upload</span>
+        </button>
       </div>
     </>
   );
