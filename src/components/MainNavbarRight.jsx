@@ -13,6 +13,9 @@ export const MainNavbarRight = (props) => {
       children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
     };
   }
+  const closeNavbar = () => {
+    document.getElementById("hamburger").checked = false;
+  };
   return (
     <>
       <div id="main-navbar-right" className="flex flex-col justify-center items-center lg:flex-row text-lg lg:text-base lg:space-x-8">
@@ -58,6 +61,7 @@ export const MainNavbarRight = (props) => {
             to="/addexperience"
             onClick={() => {
               props.setinterviewid("");
+              closeNavbar();
             }}
             className={({ isActive }) =>
               isActive
@@ -83,6 +87,7 @@ export const MainNavbarRight = (props) => {
                 ? `${props.setactivelink("profile/dashboard")} login-btn`
                 : "login-btn"
             }
+            onClick={closeNavbar}
           >
             <Avatar {...stringAvatar(currentuser.user.name)} />
           </NavLink>
