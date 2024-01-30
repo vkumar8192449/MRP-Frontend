@@ -59,7 +59,10 @@ export const Dashboard = (prop) => {
     );
     const result = await response.json();
     if (result.status === "success") {
-      window.location.reload();
+      // window.location.reload();
+      // <Navigate replace to="/home" />
+      navigate("/");
+      // alert("Logout");
     }
   }
   function submitnow(e) {
