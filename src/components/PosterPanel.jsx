@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import "../components-style/PosterPanel.css";
+import avatar from "../profileAvatar.webp";
 
 export const PosterPanel = (prop) => {
   const [file, setfile] = useState(null);
@@ -46,9 +47,15 @@ export const PosterPanel = (prop) => {
     <>
       <Toaster position="bottom-left" reverseOrder={false} />
       <div id="posterpanel" onClick={cloaseposterpanel}></div>
-      <div id="poster-main">
-        <input type="file" name="photo" id="photo" onChange={onFileChange} />
-        <button onClick={onFileUpload}>Upload</button>
+      <div id="poster-main" className="flex flex-col p-24 ">
+        <div className="mb-4 relative">
+          <img src={avatar} alt="avatar" className="w-32 border-gray-500 border-[0.1rem] rounded-md shadow-md"/>
+          <p className="absolute left-1/2 bottom-0 -translate-x-1/2 font-medium text-xl text-gray-200">1x1</p>
+        </div>
+        <div>
+          <input type="file" name="photo" id="photo" onChange={onFileChange} />
+          <button onClick={onFileUpload}>Upload</button>
+        </div>
       </div>
     </>
   );
