@@ -9,8 +9,9 @@ import Avatar from "@mui/material/Avatar";
 export const MainNavbarRight = (props) => {
   const { currentuser, setcurrentuser, setislogin } = useUserContext();
   function stringAvatar(name) {
+    name=name.trim();
     return {
-      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+      children: !name.includes(" ") ? `${name.split(" ")[0][0]}` : `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
     };
   }
   const closeNavbar = () => {

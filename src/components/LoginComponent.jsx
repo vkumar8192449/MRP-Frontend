@@ -46,6 +46,7 @@ export const LoginComponent = (props) => {
           }
         );
         const result = await response.json();
+        console.log(result);
         dismiss();
         if (result.status === "success") {
           successnotify("Logged in successfully");
