@@ -62,6 +62,7 @@ export const PosterPanel = (prop) => {
           </svg>
           <span>Upload</span>
         </button>
+
       </div>
     </>
   );
