@@ -47,15 +47,21 @@ export const PosterPanel = (prop) => {
     <>
       <Toaster position="bottom-left" reverseOrder={false} />
       <div id="posterpanel" onClick={cloaseposterpanel}></div>
-      <div id="poster-main" className="flex flex-col p-24 ">
-        <div className="mb-4 relative">
-          <img src={avatar} alt="avatar" className="w-32 border-gray-500 border-[0.1rem] rounded-md shadow-md"/>
-          <p className="absolute left-1/2 bottom-0 -translate-x-1/2 font-medium text-xl text-gray-200">1x1</p>
-        </div>
-        <div>
-          <input type="file" name="photo" id="photo" onChange={onFileChange} />
-          <button onClick={onFileUpload}>Upload</button>
-        </div>
+      <div id="poster-main">
+        <input type="file" name="photo" id="photo" onChange={onFileChange} />
+        <button
+          onClick={onFileUpload}
+          class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
+        >
+          <svg
+            class="fill-current w-4 h-4 mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M7 12V18H13V12H18l-8-8-8 8h5z" />
+          </svg>
+          <span>Upload</span>
+        </button>
       </div>
     </>
   );
