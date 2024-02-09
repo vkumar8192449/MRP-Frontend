@@ -343,6 +343,7 @@ export const AddExperience = (prop) => {
                         <option value="oa">OA</option>
                         <option value="technical">Technical</option>
                         <option value="sys-design">System Design</option>
+                        <option value="gd">Group Disscussion</option>
                         <option value="hr">HR</option>
                       </select>
                     </div>
