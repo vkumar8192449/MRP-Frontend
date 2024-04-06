@@ -5,9 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 export const LoginComponent = (props) => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
-  // eslint-disable-next-line
   const [usernameerror, setusernameerror] = useState(false);
-  // eslint-disable-next-line
   const [userpassworderror, setuserpassworderror] = useState(false);
 
   const toastId = React.useRef(null);
@@ -64,72 +62,7 @@ export const LoginComponent = (props) => {
   return (
     <>
       <Toaster position="bottom-left" reverseOrder={false} />
-      {/* <div id="login-component">
-        <TextField
-          sx={{
-            m: 1,
-            width: "60%",
-            backgroundColor: "white",
-            borderRadius: "4px",
-          }}
-          value={username}
-          onChange={(newValue) =>
-            setusername(newValue.target.value.toUpperCase())
-          }
-          InputLabelProps={{ sx: { color: "black", fontSize: "1.1rem" } }}
-          id="filled-basic"
-          error={usernameerror}
-          label="Email"
-          variant="filled"
-        />
-        <FormControl
-          sx={{
-            m: 1,
-            width: "60%",
-            backgroundColor: "white",
-            borderRadius: "4px",
-          }}
-          error={userpassworderror}
-          onChange={(newValue) => setpassword(newValue.target.value)}
-          variant="filled"
-        >
-          <InputLabel
-            sx={{
-              color: "black",
-              fontSize: "1.1rem",
-            }}
-            htmlFor="filled-adornment-password"
-          >
-            Password
-          </InputLabel>
-          <FilledInput
-            value={password}
-            id="filled-adornment-password"
-            type={showPassword ? "text" : "password"}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-        <button id="exit-login" onClick={tryLogin}>
-          LOG IN
-        </button>
-        <p className="forgotten-pass">Forgotten password?</p>
-        <Link id="new-register" to="/register">
-          <button className="new-register">Register</button>
-        </Link>
-      </div> */}
-
-      <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
             Log in to your account

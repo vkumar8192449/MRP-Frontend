@@ -48,7 +48,6 @@ export const AddExperience = (prop) => {
     if (prop.interviewid !== "") {
       retrievedata();
     }
-    // eslint-disable-next-line
   }, []);
   const errornotify = (msg) => toast.error(msg);
   const successnotify = (msg) => toast.success(msg);
@@ -521,8 +520,6 @@ export const AddExperience = (prop) => {
                   >
                     <option value="fte">FTE</option>
                     <option value="intern">Internship</option>
-                    {/* <option value="FTE+Internship">FTE + Internship</option> */}
-                    {/* <option value="PPO">PPO</option> */}
                   </select>
                 </div>
                 <div className="form-group">
