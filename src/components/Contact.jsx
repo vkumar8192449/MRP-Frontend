@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 export const Contact = () => {
-  const [name, setname] = useState("");
-  const [message, setMessage] = useState("");
+const [name, setname] = useState("");
+const [message, setMessage] = useState("");
 
-  const constructMailtoLink = () => {
+const constructMailtoLink = () => {
     const subject = "Contact Us";
     const body = `${message}\n\nWith Regards,\n${name}`;
     const mailtoLink = `mailto:mrp.nitjsr@gmail.com?subject=${encodeURIComponent(

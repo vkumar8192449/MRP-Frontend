@@ -9,7 +9,6 @@ export const RegisterComponent = (props) => {
   const [userotperror, setuserotperror] = useState(false);
 
   const [registrationnumber, setregistrationnumber] = useState("");
-  // eslint-disable-next-line
   const [registrationnumbererror, setregistrationnumbererror] = useState(false);
   const [otpsended, setotpsended] = useState(false);
   const [registerbtntxt, setregisterbtntxt] = useState("GET OTP");
@@ -94,92 +93,6 @@ export const RegisterComponent = (props) => {
   return (
     <>
       <Toaster position="bottom-left" reverseOrder={false} />
-      {/* <div id="register-component">
-        <TextField
-          sx={{
-            m: 1,
-            width: "60%",
-            backgroundColor: "white",
-            borderRadius: "4px",
-          }}
-          disabled={otpsended ? true : false}
-          value={registrationnumber}
-          onChange={(newValue) =>
-            setregistrationnumber(newValue.target.value.toUpperCase())
-          }
-          InputLabelProps={{ sx: { color: "black", fontSize: "1.1rem" } }}
-          id="filled-basic"
-          error={registrationnumbererror}
-          label="Registration No."
-          variant="filled"
-        />
-        {otpsended ? (
-          <>
-            <TextField
-              sx={{
-                m: 1,
-                width: "60%",
-                backgroundColor: "white",
-                borderRadius: "4px",
-              }}
-              value={otp}
-              error={userotperror}
-              onChange={(newValue) => setotp(newValue.target.value)}
-              InputLabelProps={{ sx: { color: "black", fontSize: "1.1rem" } }}
-              id="filled-basic"
-              label="Enter OTP"
-              variant="filled"
-            />
-            <FormControl
-              sx={{
-                m: 1,
-                width: "60%",
-                backgroundColor: "white",
-                borderRadius: "4px",
-              }}
-              error={userpassworderror}
-              onChange={(newValue) => setcreatepassword(newValue.target.value)}
-              variant="filled"
-            >
-              <InputLabel
-                sx={{
-                  color: "black",
-                  fontSize: "1.1rem",
-                }}
-                htmlFor="filled-adornment-password"
-              >
-                Create Password
-              </InputLabel>
-              <FilledInput
-                value={createpassword}
-                id="filled-adornment-password"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-          </>
-        ) : (
-          ""
-        )}
-        <button id="exit-register" onClick={tryRegister}>
-          {registerbtntxt}
-        </button>
-        <br />
-        <Link id="already-registered" to="/login">
-          <button className="already-registered">Already Registered</button>
-        </Link>
-      </div> */}
       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
